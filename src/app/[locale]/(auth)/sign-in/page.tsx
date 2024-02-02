@@ -1,3 +1,4 @@
+import Content from './content'
 export default function SignIn() {
-  return <div>SignIn</div>
+  return <Content />
 }

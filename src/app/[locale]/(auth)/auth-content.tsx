@@ -18,13 +18,9 @@ const AuthContent = ({ session }: Props) => {
   console.log(session)
   useEffect(() => {
     if (session === null) {
-      console.log('sign')
-      // router.push('sign-in')
       router.replace(getCombinePathWithLocal('sign-in', localPathCookie)) // ถ้า session เป็น null ให้ redirect ไปยัง '/login'
     } else {
-      console.log('todo')
       router.replace(getCombinePathWithLocal('todo', localPathCookie))
-      // router.push('todo')
     }
   }, [session, router])
 
