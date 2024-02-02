@@ -1,0 +1,27 @@
+'use client'
+
+import { getCombinePathWithLocal } from '@/app/utils/share-function'
+import { Session } from 'next-auth'
+import { useCookies } from 'next-client-cookies'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
+
+type Props = {
+  session: Session | null
+}
+
+const AuthContent = ({ session }: Props) => {
+  const router = useRouter()
+  const cookies = useCookies()
+  const localPathCookie = cookies.get('NEXT_LOCALE')
+  useEffect(() => {
+    if (session === null) {
+      router.push(getCombinePathWithLocal('sign-in', localPathCookie)) // ถ้า session เป็น null ให้ redirect ไปยัง '/login'
+    } else {
+      router.push(getCombinePathWithLocal('todo', localPathCookie))
+    }
+  }, [session, router])
+
+  return <div>Loading ....</div>
+}
+export default AuthContent
