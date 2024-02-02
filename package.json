@@ -13,11 +13,13 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@types/uuid": "^9.0.8",
     "husky": "^9.0.10",
     "next": "14.1.0",
     "prettier-plugin-organize-imports": "^3.2.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
