@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function AddButton() {
   return (
     <button className="flex items-center w-full h-8 px-2 mt-2 text-sm font-medium rounded">
@@ -23,5 +21,5 @@ export default function AddButton() {
         placeholder="add a new task"
       />
     </button>
-  );
+  )
 }

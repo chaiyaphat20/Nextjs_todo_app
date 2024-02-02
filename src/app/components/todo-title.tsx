@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function TodoTitle() {
   return (
     <div className="flex items-center mb-6">
@@ -19,5 +17,5 @@ export default function TodoTitle() {
       </svg>
       <h4 className="font-semibold ml-3 text-lg">Todo App</h4>
     </div>
-  );
+  )
 }

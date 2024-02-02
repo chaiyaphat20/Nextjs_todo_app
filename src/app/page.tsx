@@ -1,6 +1,6 @@
-import AddButton from "./components/todo-add-button";
-import TodoItem from "./components/todo-item";
-import TodoTitle from "./components/todo-title";
+import AddButton from './components/todo-add-button'
+import TodoItem from './components/todo-item'
+import TodoTitle from './components/todo-title'
 
 export default function Home() {
   return (
@@ -11,5 +11,5 @@ export default function Home() {
         <AddButton />
       </div>
     </div>
-  );
+  )
 }

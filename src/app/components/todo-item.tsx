@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function TodoItem() {
   return (
     <div>
@@ -25,5 +23,5 @@ export default function TodoItem() {
         <span className="ml-4 text-sm">Weed front garden.</span>
       </label>
     </div>
-  );
+  )
 }
