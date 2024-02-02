@@ -1,10 +1,10 @@
 'use client'
-import { TodoItemType } from '@/app/types/todo-type'
+import { TodoItemType } from '@/app/[locale]/types/todo-type'
 import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import AddButton from './components/todo-add-button'
-import TodoItem from './components/todo-item'
-import TodoTitle from './components/todo-title'
+import AddButton from '../../components/todo-add-button'
+import TodoItem from '../../components/todo-item'
+import TodoTitle from '../../components/todo-title'
 
 export default function Main() {
   const [todoList, setTodoList] = useState<TodoItemType[]>([])
