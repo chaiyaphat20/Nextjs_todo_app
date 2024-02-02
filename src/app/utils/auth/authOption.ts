@@ -1,7 +1,7 @@
 import type { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       id: 'password',
@@ -26,6 +26,7 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt'
   },
-  debug: process.env.NODE_ENV === 'development',
-  secret: process.env.NEXTAUTH_SECRET
+  debug: process.env.NODE_ENV === 'development'
+  // secret: process.env.NEXTAUTH_SECRET
 }
+export default authOptions

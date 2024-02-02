@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.toast-error {
+  background-color: "#FBF2F2";
+  border-left: "5px solid red";
+  border-color: "red";
+}
+
+.toast-success {
+  background-color: "#F2F8F2";
+  border-left: "5px solid #07A721";
+  border-color: "#07A721";
+}
