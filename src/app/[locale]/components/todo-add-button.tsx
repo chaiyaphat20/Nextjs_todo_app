@@ -5,7 +5,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 export default function AddButton() {
   const dispatch = useAppDispatch()
-  const addNewTodo = () => {
+  const addNewTodo = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
     dispatch(
       setTodoList({
         id: uuidv4(),
@@ -15,29 +16,30 @@ export default function AddButton() {
     )
   }
   return (
-    <button
-      className="flex items-center w-full h-8 px-2 mt-2 text-sm font-medium rounded"
-      onClick={addNewTodo}
+    <form
+      className="bg-gray-100 border-t border-t-1 border-color-grey mt-6 px-6 pt-6 pb-8"
+      onSubmit={addNewTodo}
     >
-      <svg
-        className="w-5 h-5 text-gray-400 fill-current"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
+      <label
+        htmlFor="item"
+        className="block text-gray-700 text-sm font-bold mb-2"
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+        Add To-Do Item
+      </label>
+      <div className="flex">
+        <input
+          type="text"
+          className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="item"
+          name="item"
+          placeholder="Pick up groceries"
+        />{' '}
+        <input
+          type="submit"
+          defaultValue="Add Item"
+          className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 ml-2 rounded"
         />
-      </svg>
-      <input
-        className="flex-grow h-8 ml-4 bg-transparent focus:outline-none font-medium"
-        type="text"
-        placeholder="add a new task"
-      />
-    </button>
+      </div>
+    </form>
   )
 }

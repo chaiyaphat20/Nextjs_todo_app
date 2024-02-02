@@ -5,7 +5,7 @@ export default function TodoItem() {
   return (
     <>
       {todoList.map((item) => (
-        <div key={item.id}>
+        <div key={item.id} className="mt-4">
           <input
             className="hidden"
             type="checkbox"

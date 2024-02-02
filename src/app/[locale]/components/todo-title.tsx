@@ -3,9 +3,9 @@ import { useTranslations } from 'next-intl'
 export default function TodoTitle() {
   const translationTodo = useTranslations('Todo')
   return (
-    <div className="flex items-center mb-6">
+    <div className="flex items-center justify-center mb-6">
       <svg
-        className="h-8 w-8 text-indigo-500 stroke-current"
+        className="h-8 w-8 text-pink-500 stroke-current"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
