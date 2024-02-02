@@ -1,4 +1,5 @@
 import { useAppSelector } from '@/lib/hook'
+import Button from './button'
 
 export default function TodoItem() {
   const { todoList } = useAppSelector((state) => state.todoStore)
@@ -32,6 +33,7 @@ export default function TodoItem() {
             </span>
             <span className="ml-4 text-sm">{item.todo}</span>
           </label>
+          <Button />
         </div>
       ))}
     </>
