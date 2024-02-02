@@ -26,7 +26,7 @@ export default function Main() {
     <div className="flex flex-grow items-center justify-center h-full text-gray-600 bg-gray-100">
       <div className="max-w-full p-8 bg-white rounded-lg shadow-lg w-96">
         <TodoTitle />
-        <TodoItem todoList={todoList} />
+        <TodoItem />
         <AddButton />
       </div>
     </div>

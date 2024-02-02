@@ -3,6 +3,7 @@ import { CookiesProvider } from 'next-client-cookies/server'
 import { NextIntlClientProvider } from 'next-intl'
 import { Inter } from 'next/font/google'
 import { NextAuthProvider } from '../NextAuthProvider'
+import StoreProvider from '../StoreProvider'
 import '../globals.css'
 const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
@@ -30,9 +31,11 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={inter.className}>
         <CookiesProvider>
-          <NextIntlClientProvider locale={locale} messages={messages}>
-            <NextAuthProvider>{children}</NextAuthProvider>
-          </NextIntlClientProvider>
+          <StoreProvider>
+            <NextIntlClientProvider locale={locale} messages={messages}>
+              <NextAuthProvider>{children}</NextAuthProvider>
+            </NextIntlClientProvider>
+          </StoreProvider>
         </CookiesProvider>
       </body>
     </html>

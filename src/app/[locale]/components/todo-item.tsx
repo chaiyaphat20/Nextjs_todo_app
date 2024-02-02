@@ -1,10 +1,7 @@
-import { TodoItemType } from '../types/todo-type'
+import { useAppSelector } from '@/lib/hook'
 
-type PropsType = {
-  todoList: TodoItemType[]
-}
-
-export default function TodoItem({ todoList }: Readonly<PropsType>) {
+export default function TodoItem() {
+  const { todoList } = useAppSelector((state) => state.todoStore)
   return (
     <>
       {todoList.map((item) => (

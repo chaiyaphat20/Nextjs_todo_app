@@ -1,6 +1,24 @@
+'use client'
+import { setTodoList } from '@/lib/features/todoSlice'
+import { useAppDispatch } from '@/lib/hook'
+import { v4 as uuidv4 } from 'uuid'
+
 export default function AddButton() {
+  const dispatch = useAppDispatch()
+  const addNewTodo = () => {
+    dispatch(
+      setTodoList({
+        id: uuidv4(),
+        checked: false,
+        todo: `data test ${uuidv4()} `
+      })
+    )
+  }
   return (
-    <button className="flex items-center w-full h-8 px-2 mt-2 text-sm font-medium rounded">
+    <button
+      className="flex items-center w-full h-8 px-2 mt-2 text-sm font-medium rounded"
+      onClick={addNewTodo}
+    >
       <svg
         className="w-5 h-5 text-gray-400 fill-current"
         xmlns="http://www.w3.org/2000/svg"

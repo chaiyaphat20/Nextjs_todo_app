@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["uuidv"],
+  "cSpell.words": ["reduxjs", "uuidv"],
   "cSpell.ignoreRegExpList": ["/[\\u0E00-\\u0E7F]/g"],
   "editor.tabSize": 2,
   "prettier.tabWidth": 2,

@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import authReducer from './features/authSlice'
+import todoReducer from './features/todoSlice'
 
 export function makeStore() {
   return configureStore({
     reducer: {
-      authStore: authReducer
+      todoStore: todoReducer
     },
     devTools: process.env.NEXT_PUBLIC_ENV !== 'PRD'
   })
