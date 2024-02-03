@@ -58,34 +58,23 @@ export default function AddButton() {
   }, [selectedTodo?.id])
 
   return (
-    <form
-      className="bg-gray-100 border-t border-t-1 border-color-grey mt-6 px-6 pt-6 pb-8"
-      onSubmit={handleSubmit(submitTodo)}
-    >
-      <label
-        htmlFor="item"
-        className="block text-gray-700 text-sm font-bold mb-2"
-      >
-        Add To-Do Item
-      </label>
-      <div className="flex flex-col">
-        <div className="flex flex-row w-full">
-          <input
-            placeholder="todo name"
-            {...register('todo', { required: true })}
-            className="appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-          <input
-            type="submit"
-            defaultValue={`${isEditing ? 'Edit' : 'Add'}`}
-            className={` ${isEditing ? 'hover:bg-sky-700 border-sky-500 hover:border-sky-700 bg-sky-500 ' : 'hover:bg-teal-700 border-teal-500 hover:border-teal-700 bg-teal-500 '}  text-sm border-4 text-white py-1 px-2 ml-2 rounded`}
-          />
-        </div>
-
-        {errors.todo?.type === 'required' && (
-          <p className="text-red-700 text-xs">กรุณากรอกข้อมูล</p>
-        )}
+    <form className=" mt-6 " onSubmit={handleSubmit(submitTodo)}>
+      <div className="flex flex-row w-full">
+        <input
+          placeholder="todo name"
+          {...register('todo', { required: true })}
+          className="appearance-none border rounded w-full  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        />
+        <input
+          type="submit"
+          defaultValue={`${isEditing ? 'Edit' : 'Add'}`}
+          className={` ${isEditing ? 'hover:bg-sky-700 border-sky-500 hover:border-sky-700 bg-sky-500 ' : 'hover:bg-teal-700 border-teal-500 hover:border-teal-700 bg-teal-500 '}  text-sm border-4 text-white py-1 px-2 ml-2 rounded`}
+        />
       </div>
+
+      {errors.todo?.type === 'required' && (
+        <p className="text-red-700 text-xs">กรุณากรอกข้อมูล</p>
+      )}
     </form>
   )
 }
