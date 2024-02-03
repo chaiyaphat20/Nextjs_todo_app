@@ -1,7 +1,8 @@
 'use client'
-import { addTodo } from '@/lib/features/todoSlice'
-import { useAppDispatch } from '@/lib/hook'
+import { addTodo, setIsEditing } from '@/lib/features/todoSlice'
+import { useAppDispatch, useAppSelector } from '@/lib/hook'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
@@ -14,10 +15,13 @@ type SchemaType = yup.InferType<typeof schema>
 
 export default function AddButton() {
   const dispatch = useAppDispatch()
+  const { isEditing, selectedTodo } = useAppSelector((state) => state.todoStore)
+
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors }
   } = useForm({ resolver: yupResolver(schema) })
 
@@ -30,7 +34,17 @@ export default function AddButton() {
       })
     )
     reset()
+    dispatch(setIsEditing(false))
   }
+
+  useEffect(() => {
+    if (selectedTodo?.id) {
+      setValue('todo', selectedTodo?.todo!)
+      dispatch(setIsEditing(true))
+    } else {
+      setValue('todo', '')
+    }
+  }, [selectedTodo?.id])
 
   return (
     <form
@@ -52,7 +66,7 @@ export default function AddButton() {
           />
           <input
             type="submit"
-            defaultValue="Add Item"
+            defaultValue={`${isEditing ? 'Edit' : 'Add'}`}
             className=" bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 ml-2 rounded"
           />
         </div>

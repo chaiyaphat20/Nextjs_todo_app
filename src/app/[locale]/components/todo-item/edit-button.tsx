@@ -1,5 +1,5 @@
-import { setSelectedTodoId } from '@/lib/features/todoSlice'
-import { useAppDispatch } from '@/lib/hook'
+import { setSelectedTodo } from '@/lib/features/todoSlice'
+import { useAppDispatch, useAppSelector } from '@/lib/hook'
 import { MdEdit } from 'react-icons/md'
 import { TodoItemType } from '../../types/todo-type'
 
@@ -9,8 +9,10 @@ type PropsType = {
 
 export default function ButtonEdit({ todoItem }: Readonly<PropsType>) {
   const dispatch = useAppDispatch()
+  const { todoList } = useAppSelector((state) => state.todoStore)
   const editTodoItem = (todoId: string) => {
-    dispatch(setSelectedTodoId(todoId))
+    const selectedTodo = todoList.find((todo) => todo.id === todoId)
+    dispatch(setSelectedTodo(selectedTodo!))
   }
   return (
     <button

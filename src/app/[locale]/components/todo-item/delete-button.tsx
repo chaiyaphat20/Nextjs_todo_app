@@ -1,4 +1,8 @@
-import { addTodoList } from '@/lib/features/todoSlice'
+import {
+  addTodoList,
+  setIsEditing,
+  setSelectedTodo
+} from '@/lib/features/todoSlice'
 import { useAppDispatch, useAppSelector } from '@/lib/hook'
 import { IoClose } from 'react-icons/io5'
 import { TodoItemType } from '../../types/todo-type'
@@ -11,6 +15,8 @@ export default function ButtonDelete({ todoItem }: Readonly<PropsType>) {
   const deleteTodoItem = (todoId: string) => {
     const todoDeleteItem = todoList.filter((todo) => todo.id !== todoId)
     dispatch(addTodoList(todoDeleteItem))
+    dispatch(setIsEditing(false))
+    dispatch(setSelectedTodo(null))
   }
   return (
     <button

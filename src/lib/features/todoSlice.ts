@@ -3,14 +3,15 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 interface TodoState {
   todoList: TodoItemType[]
-  selectedTodoId: string
+  selectedTodo: TodoItemType | null
+  isEditing: boolean
 }
 
 const initialState: TodoState = {
   todoList: [],
-  selectedTodoId: ''
+  selectedTodo: null,
+  isEditing: false
 }
-
 const authSlice = createSlice({
   name: 'todo',
   initialState,
@@ -21,11 +22,18 @@ const authSlice = createSlice({
     addTodoList: (state, { payload }: PayloadAction<TodoItemType[]>) => {
       state.todoList = payload
     },
-    setSelectedTodoId: (state, { payload }: PayloadAction<string>) => {
-      state.selectedTodoId = payload
+    setSelectedTodo: (
+      state,
+      { payload }: PayloadAction<TodoItemType | null>
+    ) => {
+      state.selectedTodo = payload
+    },
+    setIsEditing: (state, { payload }: PayloadAction<boolean>) => {
+      state.isEditing = payload
     }
   }
 })
-export const { addTodo, addTodoList, setSelectedTodoId } = authSlice.actions
+export const { addTodo, addTodoList, setSelectedTodo, setIsEditing } =
+  authSlice.actions
 
 export default authSlice.reducer
