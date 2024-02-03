@@ -17,17 +17,19 @@ export default function AddButton() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm({ resolver: yupResolver(schema) })
 
   const addNewTodo = (data: SchemaType) => {
-    return dispatch(
+    dispatch(
       addTodo({
         id: uuidv4(),
         checked: false,
         todo: data.todo
       })
     )
+    reset()
   }
 
   return (

@@ -15,7 +15,7 @@ export default function ButtonDelete({ todoItem }: Readonly<PropsType>) {
   console.log(todoList)
   return (
     <button
-      className="bg-red-300 hover:bg-red-400  items-center justify-center"
+      className="bg-red-300 hover:bg-red-400  items-center justify-center h-[40px]"
       onClick={() => deleteTodoItem(todoItem.id)}
     >
       <IoClose size={25} color="white" />
