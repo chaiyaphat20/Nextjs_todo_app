@@ -12,7 +12,6 @@ export default function ButtonDelete({ todoItem }: Readonly<PropsType>) {
     const todoDeleteItem = todoList.filter((todo) => todo.id !== todoId)
     dispatch(addTodoList(todoDeleteItem))
   }
-  console.log(todoList)
   return (
     <button
       className="bg-red-300 hover:bg-red-400  items-center justify-center h-[40px]"

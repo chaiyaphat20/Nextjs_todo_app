@@ -41,7 +41,7 @@ export default function TodoItem() {
           </div>
           <div className="flex items-center h-[40px]">
             <ButtonDelete todoItem={item} />
-            <ButtonEdit />
+            <ButtonEdit todoItem={item} />
           </div>
         </div>
       ))}
