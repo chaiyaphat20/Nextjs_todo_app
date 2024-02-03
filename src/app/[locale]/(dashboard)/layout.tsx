@@ -1,3 +1,5 @@
+import authOption from '@/app/utils/auth/authOption'
+import { getServerSession } from 'next-auth'
 import MainLayout from './main-layout'
 
 type Props = {
@@ -6,5 +8,6 @@ type Props = {
 }
 
 export default async function RootLayout({ children }: Readonly<Props>) {
-  return <MainLayout>{children}</MainLayout>
+  const session = await getServerSession(authOption)
+  return <MainLayout session={session}>{children}</MainLayout>
 }

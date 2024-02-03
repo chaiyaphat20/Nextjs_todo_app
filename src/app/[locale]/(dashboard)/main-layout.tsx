@@ -1,4 +1,5 @@
 'use client'
+import { Session } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import { useLocale } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
@@ -6,8 +7,10 @@ import React from 'react'
 import { FaSignOutAlt } from 'react-icons/fa'
 type PropsType = {
   children: React.ReactNode
+  session: Session | null
 }
-export default function MainLayout({ children }: Readonly<PropsType>) {
+
+export default function MainLayout({ children, session }: Readonly<PropsType>) {
   const router = useRouter()
   const locale = useLocale()
   const pathname = usePathname()
@@ -35,6 +38,7 @@ export default function MainLayout({ children }: Readonly<PropsType>) {
             className="items-center justify-between hidden w-full lg:flex lg:w-auto md:order-1"
             id="navbar-language"
           >
+            <h1>Hello {session?.user?.name}</h1>
             <div className="w-10" />
             <button
               onClick={() => handleSwitchLanguage('en')}
