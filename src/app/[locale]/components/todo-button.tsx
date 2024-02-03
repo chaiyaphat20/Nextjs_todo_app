@@ -1,5 +1,5 @@
 'use client'
-import { addTodo, setIsEditing } from '@/lib/features/todoSlice'
+import { addTodo, addTodoList, setIsEditing } from '@/lib/features/todoSlice'
 import { useAppDispatch, useAppSelector } from '@/lib/hook'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useEffect } from 'react'
@@ -15,7 +15,9 @@ type SchemaType = yup.InferType<typeof schema>
 
 export default function AddButton() {
   const dispatch = useAppDispatch()
-  const { isEditing, selectedTodo } = useAppSelector((state) => state.todoStore)
+  const { isEditing, selectedTodo, todoList } = useAppSelector(
+    (state) => state.todoStore
+  )
 
   const {
     register,
@@ -25,14 +27,23 @@ export default function AddButton() {
     formState: { errors }
   } = useForm({ resolver: yupResolver(schema) })
 
-  const addNewTodo = (data: SchemaType) => {
-    dispatch(
-      addTodo({
-        id: uuidv4(),
-        checked: false,
-        todo: data.todo
-      })
-    )
+  const submitTodo = (data: SchemaType) => {
+    if (isEditing) {
+      const updatedTodoList = todoList.map((todo) =>
+        todo.id === selectedTodo?.id ? { ...todo, todo: data.todo } : todo
+      )
+
+      dispatch(addTodoList(updatedTodoList))
+    } else {
+      dispatch(
+        addTodo({
+          id: uuidv4(),
+          checked: false,
+          todo: data.todo
+        })
+      )
+    }
+
     reset()
     dispatch(setIsEditing(false))
   }
@@ -49,7 +60,7 @@ export default function AddButton() {
   return (
     <form
       className="bg-gray-100 border-t border-t-1 border-color-grey mt-6 px-6 pt-6 pb-8"
-      onSubmit={handleSubmit(addNewTodo)}
+      onSubmit={handleSubmit(submitTodo)}
     >
       <label
         htmlFor="item"
@@ -67,7 +78,7 @@ export default function AddButton() {
           <input
             type="submit"
             defaultValue={`${isEditing ? 'Edit' : 'Add'}`}
-            className=" bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 ml-2 rounded"
+            className={` ${isEditing ? 'hover:bg-sky-700 border-sky-500 hover:border-sky-700 bg-sky-500 ' : 'hover:bg-teal-700 border-teal-500 hover:border-teal-700 bg-teal-500 '}  text-sm border-4 text-white py-1 px-2 ml-2 rounded`}
           />
         </div>
 

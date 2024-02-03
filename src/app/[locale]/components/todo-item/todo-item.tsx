@@ -9,7 +9,7 @@ export default function TodoItem() {
       {todoList.map((item) => (
         <div
           key={item.id}
-          className="mt-4  bg-slate-50 rounded-sm flex flex-row justify-between items-center "
+          className="mt-4  bg-slate-50 rounded-sm flex flex-row justify-between items-center cursor-pointer hover:bg-gray-100"
         >
           <div>
             <input
@@ -19,7 +19,7 @@ export default function TodoItem() {
               defaultChecked
             />
             <label
-              className="flex items-center h-10 px-2 rounded cursor-pointer hover:bg-gray-100"
+              className="flex items-center h-10 px-2 rounded cursor-pointer"
               htmlFor="task_1"
             >
               <span className="flex items-center justify-center w-5 h-5 text-transparent border-2 border-gray-300 rounded-full">

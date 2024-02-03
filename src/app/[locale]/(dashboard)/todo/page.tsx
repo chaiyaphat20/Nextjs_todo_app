@@ -1,5 +1,5 @@
 'use client'
-import AddButton from '../../components/todo-add-button'
+import AddButton from '../../components/todo-button'
 import TodoItem from '../../components/todo-item/todo-item'
 import TodoTitle from '../../components/todo-title'
 
