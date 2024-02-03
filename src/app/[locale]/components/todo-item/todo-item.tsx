@@ -7,7 +7,10 @@ export default function TodoItem() {
   return (
     <>
       {todoList.map((item) => (
-        <div key={item.id} className="mt-4 flex flex-row bg-slate-100">
+        <div
+          key={item.id}
+          className="mt-4 flex flex-row bg-slate-50 rounded-sm"
+        >
           <input
             className="hidden"
             type="checkbox"
@@ -34,7 +37,7 @@ export default function TodoItem() {
             </span>
             <span className="ml-4 text-sm">{item.todo}</span>
           </label>
-          <ButtonDelete />
+          <ButtonDelete todoItem={item} />
           <ButtonEdit />
         </div>
       ))}

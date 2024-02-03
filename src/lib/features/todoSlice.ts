@@ -13,11 +13,14 @@ const authSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {
-    setTodoList: (state, { payload }: PayloadAction<TodoItemType>) => {
+    addTodo: (state, { payload }: PayloadAction<TodoItemType>) => {
       state.todoList = [...state.todoList, payload]
+    },
+    addTodoList: (state, { payload }: PayloadAction<TodoItemType[]>) => {
+      state.todoList = payload
     }
   }
 })
-export const { setTodoList } = authSlice.actions
+export const { addTodo, addTodoList } = authSlice.actions
 
 export default authSlice.reducer
