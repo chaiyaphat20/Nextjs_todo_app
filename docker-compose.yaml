@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  clinet:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: todo-app-web
+    container_name:  todo-app-web-container
+    restart: always
+    ports:
+      - 3000:3000
+    env_file:
+      - ./.env
